@@ -51,9 +51,9 @@
                 //htmlspecialchars()でエスケープ処理を行う
                 $safe_number = htmlspecialchars($number, ENT_QUOTES,'UTF-8');
                 if ($number % 2 == 0) {
-                    echo "{$number}は偶数です。";
+                    echo "{$safe_number}は偶数です。";
                 } else {
-                    echo "{$number}は奇数です。";
+                    echo "{$safe_number}は奇数です。";
                 }
                 ?>
 
@@ -84,14 +84,17 @@
                 <?php
                 //任意のデータを受け取る
                 $age=$_POST["age"];
+                $safe_age = htmlspecialchars($age, ENT_QUOTES, 'UTF-8');
                 $membership = $_POST["membership"]; //$_RADIO[]にした場合Warning: Undefined variable $_RADIO in /var/www/html/7-1-6_hands-on/practice/discount_calculator.php on line 87 Warning: Trying to access array offset on value of type null in /var/www/html/7-1-6_hands-on/practice/discount_calculator.php on line 87
+                $safe_membership = htmlspecialchars($membership, ENT_QUOTES, 'UTF-8');
                 $student = $_POST["student"];
+                $safe_student = htmlspecialchars($student, ENT_QUOTES, 'UTF-8');
                 //年齢が18歳以上　かつ　会員である場合
-                if ($age >= 18 && $membership == "member") {
+                if ($safe_age >= 18 && $safe_membership == "member") {
                     echo "「割引が適用されます」";
                 }
                 //年齢が65歳以上　または　学生である場合
-                if ($age >=65 || $student =="student"){
+                if ($safe_age >=65 || $safe_student =="student"){
                     echo "「シニア・学生割引が適用されます」";
                 }
                 ?>
@@ -113,20 +116,16 @@
                 $damage = 30;
                 $used_item = 2;
                 $total_score = 0;
-
+                //スコアの計算と結果表示
                 $total_score += $first_additional_score;
                 echo "初期スコア: {$total_score}点<br>";
-
                 $total_score += $bonus_stage_clear;
                 echo "ボーナスステージクリア: {$total_score}点<br>";
-
                 $total_score -= $damage;
                 echo "ダメージ: {$total_score}点<br>";
-
                 $total_score *= $used_item;
                 echo "スコア2倍アイテム仕様: {$total_score}点<br>";
                 echo "最終スコア: {$total_score}点<br>"
-
                 ?>
 
     </body>

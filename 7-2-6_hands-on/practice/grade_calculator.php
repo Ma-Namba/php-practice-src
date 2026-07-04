@@ -5,7 +5,7 @@
         <title>7-2-6_hands-on(sample)</title>
     </head>
     <body>
-        <h1>成績判定システム</h1>
+        <h1>成績判定</h1>
         <br>
             <h2>【個別成績】</h2>
         <br>

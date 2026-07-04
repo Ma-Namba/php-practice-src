@@ -45,9 +45,9 @@
                 </form>
 
                 <?php
-                $number = 0;
+
                 //任意の整数データを受けとる
-                $number = $_POST["number"];
+                $number = empty($_POST["number"])? 0 : $_POST["number"];
                 //htmlspecialchars()でエスケープ処理を行う
                 $safe_number = htmlspecialchars($number, ENT_QUOTES,'UTF-8');
                 if ($number % 2 == 0) {
